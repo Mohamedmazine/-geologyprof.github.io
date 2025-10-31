@@ -1,0 +1,18 @@
+ https://geologyprof.github.io
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>GeologyProf - À propos</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="about.html">À propos</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <h1>À propos</h1>
+  <p>GeologyProf est un site dédié à la vulgarisation de la géologie pour tous les niveaux.</p>
+</body>
+</html>
