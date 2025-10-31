@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GéoSite – Géologie | Geology prof</title>
+    <meta name="description" content="Un mini-site gratuit pour présenter des projets de géologie, cartes et sorties de terrain." />
+    <link rel="canonical" href="https://geologyprof.github.io/" />
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="GéoSite – Géologie | Geology prof" />
+    <meta property="og:description" content="Cartes, coupes, affleurements & sorties de terrain." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://geologyprof.github.io/" />
+    <meta property="og:image" content="https://geologyprof.github.io/img/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- PWA & Favicon -->
+    <meta name="theme-color" content="#0b0f10" />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%2312181b'/><path d='M38 18l8 8-6 6-8-8-8 8-4-4 12-12z' fill='%235bc0be'/><rect x='18' y='40' width='28' height='6' rx='3' fill='%235bc0be'/></svg>'" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "GéoSite – Geology prof",
+      "url": "https://geologyprof.github.io/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://geologyprof.github.io/projets.html?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <style>
+      :root{--bg:#0b0f10; --panel:#12181b; --ink:#e7f2f2; --muted:#b8c4c4; --accent:#5bc0be; --line:#21323a}
+      *{box-sizing:border-box}
+      body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+      header{padding:48px 20px;background:linear-gradient(120deg,#0b0f10 0%, #142229 60%, #0b0f10 100%);border-bottom:1px solid var(--line)}
+      .wrap{max-width:1050px;margin:0 auto;padding:0 20px}
+      h1{margin:0 0 8px;font-size:clamp(28px,4vw,44px)}
+      p.lead{margin:0;color:var(--muted);max-width:72ch}
+      nav{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+      nav a{padding:10px 14px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink)}
+      nav a:hover{border-color:var(--accent)}
+      section{padding:48px 0;border-bottom:1px solid var(--line)}
+      h2{margin-top:0;font-size:clamp(22px,3vw,32px)}
+      .grid{display:grid;gap:18px}
+      .grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+      .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}
+      .small{color:var(--muted);font-size:14px}
+      #map{height:380px;border-radius:16px;border:1px solid var(--line)}
+      footer{padding:28px 20px;color:var(--muted)}
+      a{color:var(--accent)}
+      img.resp{width:100%;height:160px;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+      .kbd{font:12px ui-monospace,Menlo,Consolas,monospace;background:#0c1417;border:1px solid var(--line);border-radius:6px;padding:2px 6px}
+      @media (prefers-color-scheme: light){:root{--bg:#f7fbfd;--panel:#ffffff;--ink:#0c1114;--muted:#4a5a61;--accent:#1565c0;--line:#e5eef2}}
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <h1>GéoSite – Geology prof</h1>
+        <p class="lead">Présentez vos cartes, affleurements, sorties de terrain et projets en géologie.</p>
+        <nav>
+          <a href="projets.html">Projets</a>
+          <a href="#carte">Carte</a>
+          <a href="#galerie">Galerie</a>
+          <a href="#a-propos">À propos</a>
+          <a href="#licences">Données & licences</a>
+          <a href="contact.html">Contact</a>
+          <a href="mentions.html">Mentions</a>
+        </nav>
+      </div>
+    </header>
+    <main class="wrap">
+      <section id="projets">
+        <h2>Projets récents</h2>
+        <div class="grid cols-3">
+          <article class="card">
+            <img class="resp" src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop" alt="Affleurement" />
+            <h3>Cartographie d'un affleurement</h3>
+            <p class="small">Méthodes, lithologies, schéma tectonique et résultats.</p>
+            <p><a href="projets.html">Voir les projets →</a></p>
+          </article>
+          <article class="card">
+            <img class="resp" src="https://images.unsplash.com/photo-1472396961693-142e6e269027?q=80&w=1200&auto=format&fit=crop" alt="Coupes" />
+            <h3>Coupes géologiques</h3>
+            <p class="small">Coupes interprétatives réalisées à partir de données de terrain.</p>
+            <p><a href="projets.html">Voir les coupes →</a></p>
+          </article>
+          <article class="card">
+            <img class="resp" src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=1200&auto=format&fit=crop" alt="Fossiles" />
+            <h3>Inventaire paléontologique</h3>
+            <p class="small">Fossiles repérés, âge relatif, photos macro et micro.</p>
+            <p><a href="projets.html">Découvrir →</a></p>
+          </article>
+        </div>
+      </section>
+      <section id="carte">
+        <h2>Carte interactive</h2>
+        <p class="small">Exemple : points d'intérêt, tracé de faille et polygone d'un affleurement.</p>
+        <div id="map"></div>
+        <details class="small" style="margin-top:10px"><summary>Voir les données GeoJSON</summary>
+          <pre id="geojsonText" style="white-space:pre-wrap"></pre>
+        </details>
+      </section>
+      <section id="galerie">
+        <h2>Galerie d'images</h2>
+        <div class="grid cols-3">
+          <figure class="card"><img class="resp" src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?q=80&w=1200&auto=format&fit=crop" alt="Roches" /><figcaption class="small">Textures et minéralogie</figcaption></figure>
+          <figure class="card"><img class="resp" src="https://images.unsplash.com/photo-1500043357865-c6b8827edf53?q=80&w=1200&auto=format&fit=crop" alt="Strates" /><figcaption class="small">Stratification</figcaption></figure>
+          <figure class="card"><img class="resp" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" alt="Carte" /><figcaption class="small">Extrait de carte</figcaption></figure>
+        </div>
+      </section>
+      <section id="a-propos">
+        <h2>À propos</h2>
+        <p>Je suis géologue / étudiant·e en géologie. Ce site présente mes sorties de terrain, mes cartes et mes notes. Contact : <a href="mailto:geologyunivm@gmail.com">geologyunivm@gmail.com</a>.</p>
+      </section>
+      <section id="licences">
+        <h2>Données & licences</h2>
+        <ul>
+          <li>Fond de carte : © contributeurs <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap</a>.</li>
+          <li>Moteur carto : <a href="https://leafletjs.com/" target="_blank" rel="noreferrer">Leaflet</a> (BSD-2-Clause).</li>
+          <li>Images : tes photos ou sources mentionnées (ex. Unsplash).</li>
+          <li>Contenus : préciser ta licence (ex. CC BY 4.0) si tu souhaites le partage.</li>
+        </ul>
+      </section>
+    </main>
+    <footer class="wrap">
+      <p class="small">© <span id="year"></span> Geology prof – GéoSite</p>
+    </footer>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const features = {"type":"FeatureCollection","features":[
+        {"type":"Feature","properties":{"nom":"Affleurement A","description":"Grès grossiers, bancs massifs."},"geometry":{"type":"Point","coordinates":[2.35,48.85]}},
+        {"type":"Feature","properties":{"nom":"Faille B (trace)","description":"Faille normale, rejet ~15 m."},"geometry":{"type":"LineString","coordinates":[[2.28,48.86],[2.30,48.855],[2.33,48.848]]}},
+        {"type":"Feature","properties":{"nom":"Polygone affleurement C","description":"Contour de l'affleurement."},"geometry":{"type":"Polygon","coordinates":[[[2.315,48.842],[2.326,48.842],[2.326,48.849],[2.315,48.849],[2.315,48.842]]]}}]};
+      const map = L.map('map'); map.setView([48.8566, 2.3522], 11);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 19, attribution: '&copy; OpenStreetMap'}).addTo(map);
+      const pointStyle={radius:6,fillColor:'#5bc0be',color:'#21323a',weight:1,opacity:1,fillOpacity:0.9};
+      const points=L.geoJSON(features,{filter:f=>f.geometry.type==='Point',pointToLayer:(f,latlng)=>L.circleMarker(latlng,pointStyle),onEachFeature:(f,l)=>{const p=f.properties||{};l.bindPopup(`<strong>${p.nom||'Point'}</strong><br>${p.description||''}`);}});
+      const lignes=L.geoJSON(features,{filter:f=>f.geometry.type==='LineString',style:{weight:3},onEachFeature:(f,l)=>{const p=f.properties||{};l.bindPopup(`<strong>${p.nom||'Ligne'}</strong><br>${p.description||''}`);}});
+      const polygones=L.geoJSON(features,{filter:f=>f.geometry.type==='Polygon',style:{weight:1},onEachFeature:(f,l)=>{const p=f.properties||{};l.bindPopup(`<strong>${p.nom||'Polygone'}</strong><br>${p.description||''}`);}});
+      const layers={'Points':points,'Failles/Tracés':lignes,'Affleurements (polygones)':polygones}; Object.values(layers).forEach(l=>l.addTo(map));
+      L.control.layers(null, layers, {collapsed:false}).addTo(map);
+      try{const group=L.featureGroup(Object.values(layers)); map.fitBounds(group.getBounds(),{padding:[20,20]});}catch(e){}
+      document.getElementById('geojsonText').textContent = JSON.stringify(features, null, 2);
+    </script>
+  </body>
+</html>

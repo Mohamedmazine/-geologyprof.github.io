@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact | GéoSite – Geology prof</title>
+    <meta name="description" content="Formulaire de contact pour joindre Geology prof." />
+    <link rel="canonical" href="https://geologyprof.github.io/contact.html" />
+    <meta property="og:title" content="Contact | GéoSite – Geology prof" />
+    <meta property="og:description" content="Écrivez-moi via le formulaire ou par e‑mail." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://geologyprof.github.io/contact.html" />
+    <meta property="og:image" content="https://geologyprof.github.io/img/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      :root{ --bg:#0b0f10; --panel:#12181b; --ink:#e7f2f2; --muted:#b8c4c4; --accent:#5bc0be; --line:#21323a }
+      *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+      header{padding:38px 20px;background:linear-gradient(120deg,#0b0f10,#142229 60%,#0b0f10);border-bottom:1px solid var(--line)}
+      .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+      h1{margin:0 0 8px} .muted{color:var(--muted)} a{color:var(--accent)}
+      main{padding:28px 0} form{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:12px}
+      input,textarea,button{width:100%;padding:12px 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px;color:var(--ink)}
+      button{background:var(--accent);color:#062224;cursor:pointer;border:none;font-weight:600}
+      button:hover{filter:brightness(1.05)}
+      .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+      @media (max-width:760px){ .row{grid-template-columns:1fr} }
+      .note{color:var(--muted);font-size:14px}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <nav style="margin-bottom:14px"><a href="index.html">Accueil</a> · <a href="projets.html">Projets</a> · <a href="mentions.html">Mentions</a></nav>
+        <h1>Contact</h1>
+        <p class="muted">Vous pouvez aussi écrire directement à <a href="mailto:geologyunivm@gmail.com">geologyunivm@gmail.com</a>.</p>
+      </div>
+    </header>
+    <main class="wrap">
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="row">
+          <div><label>Nom<br><input type="text" name="name" required></label></div>
+          <div><label>E‑mail<br><input type="email" name="email" required></label></div>
+        </div>
+        <label>Objet<br><input type="text" name="subject" required></label>
+        <label>Message<br><textarea name="message" rows="6" required></textarea></label>
+        <input type="hidden" name="_subject" value="Message depuis GéoSite" />
+        <button type="submit">Envoyer</button>
+        <p class="note">Astuce : remplace <code>YOUR_FORM_ID</code> par l’ID Formspree après création de ton formulaire. Sans configuration, un clic ouvrira ton client mail.</p>
+      </form>
+    </main>
+    <footer class="wrap"><p>© <span id="year"></span> Geology prof – GéoSite</p></footer>
+    <script>
+    // Fallback : si Formspree n'est pas configuré, basculer vers mailto
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e){
+      if (form.action.includes('YOUR_FORM_ID')) {
+        e.preventDefault();
+        const subject = encodeURIComponent(form.subject.value || 'Message GéoSite');
+        const body = encodeURIComponent(
+          'Nom: ' + (form.name.value||'') + '\n' +
+          'Email: ' + (form.email.value||'') + '\n\n' +
+          (form.message.value||'')
+        );
+        window.location.href = 'mailto:geologyunivm@gmail.com?subject=' + subject + '&body=' + body;
+      }
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

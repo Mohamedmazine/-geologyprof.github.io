@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Projets – GéoSite | Geology prof</title>
+    <meta name="description" content="Catalogue des projets de géologie : cartographie, paléontologie, tectonique, sorties de terrain et coupes." />
+    <link rel="canonical" href="https://geologyprof.github.io/projets.html" />
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="Projets – GéoSite | Geology prof" />
+    <meta property="og:description" content="Catalogue des projets : cartographie, paléontologie, tectonique, stratigraphie." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://geologyprof.github.io/projets.html" />
+    <meta property="og:image" content="https://geologyprof.github.io/img/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <style>
+      :root{ --bg:#0b0f10; --panel:#12181b; --ink:#e7f2f2; --muted:#b8c4c4; --accent:#5bc0be; --line:#21323a }
+      *{box-sizing:border-box}
+      body{margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif; background:var(--bg); color:var(--ink)}
+      header{padding:38px 20px; background:linear-gradient(120deg,#0b0f10, #142229 60%, #0b0f10); border-bottom:1px solid var(--line)}
+      .wrap{max-width:1100px; margin:0 auto; padding:0 20px}
+      h1{margin:0 0 6px; font-size:clamp(28px,4vw,44px)}
+      p.lead{margin:0; color:var(--muted)}
+      nav{margin-top:16px; display:flex; gap:12px; flex-wrap:wrap}
+      nav a{padding:9px 13px; border:1px solid var(--line); border-radius:999px; text-decoration:none; color:var(--ink)}
+      nav a:hover{border-color:var(--accent)}
+      main{padding:30px 0}
+      .toolbar{display:grid; gap:12px; grid-template-columns:1fr 140px 160px 160px; align-items:center}
+      .toolbar input,.toolbar select{width:100%; padding:10px 12px; background:var(--panel); border:1px solid var(--line); border-radius:10px; color:var(--ink)}
+      .grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); margin-top:18px}
+      .card{background:var(--panel); border:1px solid var(--line); border-radius:16px; overflow:hidden; display:flex; flex-direction:column}
+      .card img{width:100%; height:160px; object-fit:cover; border-bottom:1px solid var(--line)}
+      .card .pad{padding:14px}
+      .pill{display:inline-block; font-size:12px; color:var(--muted); border:1px solid var(--line); padding:2px 8px; border-radius:999px; margin-right:6px; margin-bottom:6px}
+      .row{display:flex; justify-content:space-between; align-items:center; gap:12px}
+      .muted{color:var(--muted)}
+      .kbd{font:12px ui-monospace,Menlo,Consolas,monospace; background:#0c1417; border:1px solid var(--line); border-radius:6px; padding:2px 6px}
+      footer{padding:28px 20px; color:var(--muted)}
+      a{color:var(--accent)}
+      @media (max-width:840px){ .toolbar{grid-template-columns:1fr} }
+      @media (prefers-color-scheme: light){:root{--bg:#f7fbfd; --panel:#ffffff; --ink:#0c1114; --muted:#4a5a61; --accent:#1565c0; --line:#e5eef2}}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <h1>Projets</h1>
+        <p class="lead">Cartes, coupes, affleurements, inventaires et rapports de terrain.</p>
+        <nav>
+          <a href="index.html">Accueil</a>
+          <a href="projets.html" aria-current="page">Projets</a>
+          <a href="index.html#carte">Carte</a>
+          <a href="index.html#galerie">Galerie</a>
+          <a href="index.html#a-propos">À propos</a>
+          <a href="contact.html">Contact</a>
+          <a href="mentions.html">Mentions</a>
+        </nav>
+      </div>
+    </header>
+    <main class="wrap">
+      <section class="filters">
+        <div class="toolbar">
+          <input id="q" type="search" placeholder="Rechercher (ex. grès, ammonites, faille)" />
+          <select id="thema">
+            <option value="">Thématique: toutes</option>
+            <option>Cartographie</option>
+            <option>Paléontologie</option>
+            <option>Tectonique</option>
+            <option>Stratigraphie</option>
+            <option>Pétrographie</option>
+          </select>
+          <select id="annee">
+            <option value="">Année: toutes</option>
+          </select>
+          <select id="tri">
+            <option value="new">Trier: plus récents</option>
+            <option value="old">Trier: plus anciens</option>
+            <option value="az">Trier: A→Z</option>
+          </select>
+        </div>
+      </section>
+      <section>
+        <div id="count" class="muted" style="margin-top:12px"></div>
+        <div id="grid" class="grid"></div>
+      </section>
+      <section style="margin-top:36px">
+        <h2>Modèles de fiche (copier/coller)</h2>
+        <details>
+          <summary><strong>Modèle court</strong></summary>
+          <pre class="kbd" style="white-space:pre-wrap">{
+  "id": "projet-xxx",
+  "titre": "Titre du projet",
+  "resume": "Objectif, méthode, résultat principal en 1–2 phrases.",
+  "annee": 2025,
+  "thematique": ["Cartographie"],
+  "vignette": "img/ton-image.webp",
+  "liens": {"rapport": "docs/rapport.pdf", "carte": "maps/carte.html"}
+}</pre>
+        </details>
+      </section>
+    </main>
+    <footer class="wrap">
+      <p class="muted">© <span id="year"></span> Geology prof – GéoSite</p>
+    <p class="muted">Contact : <a href="mailto:geologyunivm@gmail.com">geologyunivm@gmail.com</a></p>
+    </footer>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const projects = [
+        {
+          id: "proj-anticlinal-ifri",
+          titre: "Cartographie – anticlinal d'Ifri",
+          resume: "Carte 1:25 000, linéaments, coupe E–W et interprétation structurale.",
+          annee: 2025,
+          thematique: ["Cartographie","Tectonique"],
+          motscles: ["faille inverse","plis","Jurassique"],
+          localisation: "Bouira, Algérie",
+          vignette: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=1200&auto=format&fit=crop",
+          liens: { fiche: "projet-anticlinal-ifri.html", carte: "maps/anticlinal/index.html", pdf: "docs/anticlinal-ifri.pdf" }
+        },
+        {
+          id: "proj-paleo-jurassique",
+          titre: "Inventaire paléontologique – ammonites jurassiques",
+          resume: "Liste des taxons, biostratigraphie et photos macro/micro.",
+          annee: 2024,
+          thematique: ["Paléontologie"],
+          motscles: ["ammonites","benthique","zone ammonitique"],
+          localisation: "Tizi Ouzou, Algérie",
+          vignette: "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=1200&auto=format&fit=crop",
+          liens: { fiche: "projet-ammonites.html", pdf: "docs/inventaire-ammonites.pdf" }
+        },
+        {
+          id: "proj-coupe-boumerdes",
+          titre: "Coupe stratigraphique – bassin de Boumerdès",
+          resume: "Log stratigraphique détaillé, faciès et interprétation sédimentaire.",
+          annee: 2023,
+          thematique: ["Stratigraphie"],
+          motscles: ["grès","siltites","discordance"],
+          localisation: "Boumerdès, Algérie",
+          vignette: "https://images.unsplash.com/photo-1500043357865-c6b8827edf53?q=80&w=1200&auto=format&fit=crop",
+          liens: { fiche: "projet-coupe-boumerdes.html", carte: "maps/coupe-boumerdes.html", pdf: "docs/coupe-boumerdes.pdf" }
+        }
+      ];
+      const anneeSel = document.getElementById('annee');
+      const years = Array.from(new Set(projects.map(p=>p.annee))).sort((a,b)=>b-a);
+      years.forEach(y=>{ const o=document.createElement('option'); o.value=o.textContent=y; anneeSel.appendChild(o) });
+      function filterAndSort(){
+        const q=document.getElementById('q').value.toLowerCase().trim();
+        const t=document.getElementById('thema').value;
+        const y=document.getElementById('annee').value;
+        const tri=document.getElementById('tri').value;
+        let list=projects.filter(p=>{
+          const txt=[p.titre,p.resume,(p.motscles||[]).join(' '),(p.thematique||[]).join(' ')].join(' ').toLowerCase();
+          const okQ=!q||txt.includes(q);
+          const okT=!t||(p.thematique||[]).includes(t);
+          const okY=!y||String(p.annee)===String(y);
+          return okQ&&okT&&okY;
+        });
+        if(tri==='new') list.sort((a,b)=>b.annee-a.annee);
+        if(tri==='old') list.sort((a,b)=>a.annee-b.annee);
+        if(tri==='az') list.sort((a,b)=>a.titre.localeCompare(b.titre));
+        render(list);
+      }
+      function render(items){
+        const grid=document.getElementById('grid'); grid.innerHTML='';
+        document.getElementById('count').textContent=`${items.length} projet(s)`;
+        items.forEach(p=>{
+          const card=document.createElement('article'); card.className='card';
+          card.innerHTML=`
+            <img src="${p.vignette||''}" alt="${p.titre}" />
+            <div class="pad">
+              <div class="row"><h3 style="margin:0">${p.titre}</h3><span class="muted">${p.annee||''}</span></div>
+              <p class="muted" style="margin:8px 0 12px">${p.resume||''}</p>
+              <div>${(p.thematique||[]).map(t=>`<span class='pill'>${t}</span>`).join('')}</div>
+              <div class="row" style="margin-top:12px">
+                <div class="muted">${p.localisation||''}</div>
+                <div>
+                  ${p.liens?.fiche?`<a href='${p.liens.fiche}'>Fiche</a>`:''}
+                  ${p.liens?.carte?` · <a href='${p.liens.carte}'>Carte</a>`:''}
+                  ${p.liens?.pdf?` · <a href='${p.liens.pdf}'>PDF</a>`:''}
+                </div>
+              </div>
+            </div>`;
+          grid.appendChild(card);
+        });
+      }
+      ['q','thema','annee','tri'].forEach(id=>document.getElementById(id).addEventListener('input', filterAndSort));
+      filterAndSort();
+    </script>
+  </body>
+</html>
